@@ -50,10 +50,15 @@ namespace TestFormModelBinding.Controllers
             return View(CreateBulkEditViewModel());
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Start(BulkEditViewModel bulkEditViewModel)
         {
-            bulkEditViewModel.PersonModels = bulkEditViewModel.PersonModels.Where(p => p.Id != 3).ToList();
-            return View("Index",bulkEditViewModel);
+            var bulkEditViewModelWithout3 = bulkEditViewModel.PersonModels.Where(p => p.Id != 3).ToList();
+            return View("Index",new BulkEditViewModel()
+            {
+                PersonModels = bulkEditViewModelWithout3
+            });
         }
 
         public ActionResult About()
