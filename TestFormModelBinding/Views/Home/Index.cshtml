@@ -1,0 +1,25 @@
+﻿@model TestFormModelBinding.Models.BulkEditViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@using (Html.BeginForm("Start", "Home", FormMethod.Post))  
+{  
+    <button type="submit" class="btn btn-primary">Start</button>
+    <table>
+        @for(var idx = 0; idx < Model.PersonModels.Count; idx++)
+        {
+            <tr>
+                <td>
+                    @Html.EditorFor(beVM => beVM.PersonModels[idx].ShouldBeUpdate)
+                </td>
+                <td>
+                    @Html.EditorFor(beVM => beVM.PersonModels[idx].Id)
+                </td>
+                <td>
+                    @Html.EditorFor(beVM => beVM.PersonModels[idx].Name)
+                </td>
+            </tr>
+        }
+    </table>
+}

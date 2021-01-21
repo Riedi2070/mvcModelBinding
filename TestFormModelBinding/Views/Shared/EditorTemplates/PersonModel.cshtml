@@ -1,0 +1,10 @@
+@model TestFormModelBinding.Models.PersonModel
+<tr>
+    <td>
+        @Html.HiddenFor(p => p.Id)
+        @Html.EditorFor(p => p.ShouldBeUpdate)
+    </td>
+    <td>
+        @Html.DisplayFor(p => p.Name)
+    </td>
+</tr>
